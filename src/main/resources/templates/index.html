@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Company</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/bootstrap.min.css}" href="/css/style.css"/>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+
+
+<body>
+<div th:replace="~{fragments/header :: headerfragment}">Header</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+            <h1>Welcome to Airline Company</h1>
+            <p>We offer flights to destinations all around the world.</p>
+            <a class="btn btn-primary" th:href="@{/flights}">Book a Flight</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

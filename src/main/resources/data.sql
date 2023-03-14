@@ -1,0 +1,2 @@
+INSERT INTO (id, flight_Number,destination, omschrijving, maatschapij, departure_Date, return_Date) VALUES(1, 86321, 'Hell', 'Highway to hell', 'Satans Airlines', '2059/03/14', '2059/05/28');
+INSERT INTO (id, flight_Number,destination, omschrijving, maatschapij, departure_Date, return_Date) VALUES(2, 86322, 'Heaven', 'Highway to heaven', 'Gods Airlines', '2032/09/20', '2034/10/26');
