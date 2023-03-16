@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Details</title>
+</head>
+<body>
+<h1>Flight details</h1>
+<div th:text="${flight.getFlightNumber()}">
+    <a class="buttonLook mediumButton"
+       th:href="@{|/flightdetails/${flight.getId()}|}"
+       th:text="|${flight.getMaatschapij()} ${flight.getDestination()}|"
+    > flight info</a>
+</div>
+</body>
+</html>

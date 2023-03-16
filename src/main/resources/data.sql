@@ -1,2 +1,7 @@
-INSERT INTO (id, flight_Number,destination, omschrijving, maatschapij, departure_Date, return_Date) VALUES(1, 86321, 'Hell', 'Highway to hell', 'Satans Airlines', '2059/03/14', '2059/05/28');
-INSERT INTO (id, flight_Number,destination, omschrijving, maatschapij, departure_Date, return_Date) VALUES(2, 86322, 'Heaven', 'Highway to heaven', 'Gods Airlines', '2032/09/20', '2034/10/26');
+INSERT INTO FLIGHT (ID,DEPARTURE_DATE,DESTINATION,ORIGIN,  FLIGHT_NUMBER, MAATSCHAPIJ, OMSCHRIJVING , RETURN_DATE)
+VALUES(1, '2059-03-14', 'Hell', 'Earth', 86321, 'Satans Airlines','Highway to hell' , '2059-05-28');
+
+INSERT INTO FLIGHT (ID,DEPARTURE_DATE,DESTINATION, ORIGIN, FLIGHT_NUMBER, MAATSCHAPIJ, OMSCHRIJVING , RETURN_DATE)
+VALUES(2, '2032-09-20', 'Heaven', 'Unknown plain', 86322, 'Gods Airlines', 'Highway to heaven', '2034-10-26');
+
+INSERT INTO AIRPORT (ID, NAME, CITY, COUNTRY)

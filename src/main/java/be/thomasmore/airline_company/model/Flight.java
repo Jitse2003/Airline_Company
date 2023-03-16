@@ -1,22 +1,22 @@
 package be.thomasmore.airline_company.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
 public class Flight {
     @Id
     private Integer id;
-private Integer flightNumber;
-private String destination, omschrijving, maatschapij;
+    private Integer flightNumber;
+    private String destination, origin, omschrijving, maatschapij;
 
-@Temporal(TemporalType.DATE)
-private Date departureDate, returnDate;
+    @Temporal(TemporalType.DATE)
+    private Date departureDate, returnDate;
 
+    @ManyToMany(mappedBy = "flights")
+    private Collection<Airport> airports;
     public Flight() {
     }
 
@@ -74,5 +74,23 @@ private Date departureDate, returnDate;
 
     public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+
+
+    public Collection<Airport> getAirports() {
+        return airports;
+    }
+
+    public void setAirports(Collection<Airport> airports) {
+        this.airports = airports;
     }
 }
