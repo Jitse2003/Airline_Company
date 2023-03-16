@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Flights</title>
-  <link rel="stylesheet" type="text/css" media="all"
-        th:href="@{/css/bootstrap.min.css}" href="/css/style.css"/>
-  <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/bootstrap.min.css}" href="/css/style.css"/>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </head>
 <body>
 
@@ -14,44 +14,45 @@
 
 
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-8 mx-auto">
-      <h1>Flights</h1>
-      <p>Choose a destination and book your flight today!</p>
-      <form>
-        <div class="form-group">
-          <label for="destination">Destination</label>
-          <input type="text" class="form-control" id="destination" placeholder="Enter Destination">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1>Flights</h1>
+            <p>Choose a destination and book your flight today!</p>
+            <form>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control" id="destination" placeholder="Enter Destination">
+                </div>
+                <div class="form-group">
+                    <label for="depart">Departure Date</label>
+                    <input type="date" class="form-control" id="depart">
+                </div>
+                <div class="form-group">
+                    <label for="return">Return Date</label>
+                    <input type="date" class="form-control" id="return">
+                </div>
+                <button type="submit" class="btn btn-primary">Search Flights</button>
+            </form>
         </div>
-        <div class="form-group">
-          <label for="depart">Departure Date</label>
-          <input type="date" class="form-control" id="depart">
-        </div>
-        <div class="form-group">
-          <label for="return">Return Date</label>
-          <input type="date" class="form-control" id="return">
-        </div>
-        <button type="submit" class="btn btn-primary">Search Flights</button>
-      </form>
     </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-md-8 mx-auto">
-      <h2>Available Flights</h2>
-      <div th:each="flight: ${flights}" class="card my-3">
-        <div class="card-body">
-          <h5 class="card-title" th:text="|${flight.getOrigin()} to ${flight.getDestination()}|"></h5>
-          <a class="btn btn-primary"
-             th:href="@{|/flightdetails/${flight.getId()}|}"
-             th:text="Details"
-          >Details</a>
-          <a class="btn btn-primary"
-             th:href="@{|/flightdetails/${flight.getId()}|}"
-             th:text="Details"
-          >Details</a>
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+            <h2>Available Flights</h2>
+            <div th:each="flight: ${flights}" class="card my-3">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="|${flight.getOrigin()} to ${flight.getDestination()}|"></h5>
+                    <a class="btn btn-primary"
+                       th:href="@{|/flightdetails/${flight.getId()}|}"
+                       th:text="Details"
+                    >Details</a>
+                    <a class="btn btn-primary"
+                       th:href="@{|/flightdetails/${flight.getId()}|}"
+                       th:text="Details"
+                    >Details</a>
+                </div>
+            </div>
         </div>
-      </div>
-
+    </div>
 </div>
 </body>
 </html>
