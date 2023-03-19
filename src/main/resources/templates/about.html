@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>About</title>
-  <link rel="stylesheet" type="text/css" media="all"
-        th:href="@{/css/bootstrap.min.css}" href="/css/style.css"/>
-  <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/bootstrap.min.css}" href="/css/style.css"/>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/stylesheet.css}" href="/css/stylesheet.css"/>
+
 </head>
 <body>
 <div th:replace="~{fragments/header :: headerfragment}">Header</div>
@@ -15,18 +17,18 @@
     <div class="row">
         <div class="col-md-8">
             <h1>About Us</h1>
-            <p>We are committed to providing exceptional service and ensuring that our passengers have a safe and comfortable travel experience. Our team of experienced pilots, flight attendants, and ground staff are dedicated to making your journey as smooth as possible.</p>
-            <p>At our airline, we believe that traveling is not just about getting from point A to point B, but also about the journey itself. That's why we offer a range of in-flight entertainment options, including movies, TV shows, and music, to keep you entertained throughout your flight.</p>
+            <p>We are committed to providing exceptional service and ensuring that our passengers have a safe and
+                comfortable travel experience. Our team of experienced pilots, flight attendants, and ground staff are
+                dedicated to making your journey as smooth as possible.</p>
+            <p>At our airline, we believe that traveling is not just about getting from point A to point B, but also
+                about the journey itself. That's why we offer a range of in-flight entertainment options, including
+                movies, TV shows, and music, to keep you entertained throughout your flight.</p>
         </div>
         <div class="col-md-4">
             <h4>Interesting Flights</h4>
-            <ul class="list-unstyled">
-                <li><a href="#">Northern Lights Flight</a></li>
-                <li><a href="#">Safari Adventure Flight</a></li>
-                <li><a href="#">Island Hopping Flight</a></li>
-                <li><a href="#">Historical Landmarks Flight</a></li>
-                <li><a href="#">Food and Wine Flight</a></li>
-            </ul>
+            <div th:each="flight: ${flights}">
+                <a th:text="|${flight.getDestination()}|" th:href="@{|/flightdetails/${flight.getId()}|}"></a>
+            </div>
         </div>
     </div>
 </div>
