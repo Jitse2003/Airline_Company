@@ -56,14 +56,17 @@ public class FlightController {
         if (id == null) {
             return "flightdetails";
         }
-
-
         Optional<Flight> flight = flightRepository.findById(id);
 
-        model.addAttribute("flight", flight.get());
+        if (flight.isPresent()) {
+            model.addAttribute("flights", flightRepository.findAll());
+            model.addAttribute("flight", flight.get());
+
+        }
 
         return "flightdetails";
     }
+
 
     @PostMapping("/flight/compare")
     public String compareFlights(@RequestParam(name = "selectedFlights", required = false) List<Integer> selectedFlights,

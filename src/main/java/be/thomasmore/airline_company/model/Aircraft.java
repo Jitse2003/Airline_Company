@@ -61,4 +61,12 @@ public class Aircraft {
     public void setFlight(Collection<Flight> flight) {
         this.flight = flight;
     }
+
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
 }
