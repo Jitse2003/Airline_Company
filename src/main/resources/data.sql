@@ -1,23 +1,42 @@
-INSERT INTO FLIGHT (ID,DEPARTURE_DATE,DESTINATION,ORIGIN,  FLIGHT_NUMBER, MAATSCHAPIJ, OMSCHRIJVING , RETURN_DATE)
-VALUES(1, '2059-03-14', 'Mars', 'Earth', 86321, 'Worst Airlines','Travel route 1' , '2059-05-28');
+INSERT INTO Airport (id, name, city, country)
+VALUES (1, 'John F. Kennedy International Airport', 'New York', 'United States');
+INSERT INTO Airport (id, name, city, country)
+VALUES (2, 'Heathrow Airport', 'London', 'United Kingdom');
+INSERT INTO Airport (id, name, city, country)
+VALUES (3, 'Charles de Gaulle Airport', 'Paris', 'France');
+INSERT INTO Airport (id, name, city, country)
+VALUES (4, 'Sydney Airport', 'Sydney', 'Australia');
+INSERT INTO Airport (id, name, city, country)
+VALUES (5, 'Dubai International Airport', 'Dubai', 'United Arab Emirates');
 
-INSERT INTO FLIGHT (ID,DEPARTURE_DATE,DESTINATION, ORIGIN, FLIGHT_NUMBER, MAATSCHAPIJ, OMSCHRIJVING , RETURN_DATE)
-VALUES(2, '2032-09-20', 'Pluto', 'Jupiter', 86322, 'Best Airlines', 'Travel route 2', '2034-10-26');
+INSERT INTO Aircraft (id, capacity, manufacturer, model, airport_id)
+VALUES (1, 150, 'Boeing', '737-800', 1);
+INSERT INTO Aircraft (id, capacity, manufacturer, model, airport_id)
+VALUES (2, 200, 'Airbus', 'A320', 2);
+INSERT INTO Aircraft (id, capacity, manufacturer, model, airport_id)
+VALUES (3, 300, 'Boeing', '777-300ER', 3);
+INSERT INTO Aircraft (id, capacity, manufacturer, model, airport_id)
+VALUES (4, 100, 'Embraer', 'E175', 4);
+INSERT INTO Aircraft (id, capacity, manufacturer, model, airport_id)
+VALUES (5, 250, 'Airbus', 'A350', 5);
+INSERT INTO Aircraft (id, capacity, manufacturer, model, airport_id)
+VALUES (6, 220, 'Airbus', 'A320', 2);
 
-INSERT INTO AIRPORT (ID, CITY, COUNTRY, NAME)
-VALUES (1, 'Zaventem', 'Belgium','Airport One');
+INSERT INTO flight (id, flight_number, origin, omschrijving, departure_date, return_date, aircraft_id, airport_id)
+VALUES (1, 123, 'London', 'Flight from London to New York', '2023-04-01', '2023-04-02', 1, 1);
 
-INSERT INTO AIRPORT (ID, CITY, COUNTRY, NAME)
-VALUES (2, 'Brussel', 'Belgium','Airport Two');
+INSERT INTO flight (id, flight_number, origin, omschrijving, departure_date, return_date, aircraft_id, airport_id)
+VALUES (2, 456, 'New York', 'Flight from New York to Paris', '2023-04-03', '2023-04-04', 2, 2);
 
-INSERT INTO AIRPORT (ID, CITY, COUNTRY, NAME)
-VALUES (3, 'Charleroi', 'Belgium','Airport Three');
+INSERT INTO flight (id, flight_number, origin, omschrijving, departure_date, return_date, aircraft_id, airport_id)
+VALUES (3, 789, 'Paris', 'Flight from Paris to Tokyo', '2023-04-05', '2023-04-06', 3, 3);
 
-INSERT INTO AIRPORT_FLIGHTS (AIRPORTS_ID, FLIGHTS_ID)
-VALUES (1, 1);
+INSERT INTO flight (id, flight_number, origin, omschrijving, departure_date, return_date, aircraft_id, airport_id)
+VALUES (4, 234, 'Tokyo', 'Flight from Tokyo to Sydney', '2023-04-07', '2023-04-08', 4, 4);
 
-INSERT INTO AIRPORT_FLIGHTS (AIRPORTS_ID, FLIGHTS_ID)
-VALUES (1, 2);
+INSERT INTO flight (id, flight_number, origin, omschrijving, departure_date, return_date, aircraft_id, airport_id)
+VALUES (5, 567, 'Sydney', 'Flight from Sydney to Dubai', '2023-04-09', '2023-04-10', 5, 5);
 
-INSERT INTO AIRPORT_FLIGHTS (AIRPORTS_ID, FLIGHTS_ID)
-VALUES (2, 2);
+INSERT INTO flight (id, flight_number, origin, omschrijving, departure_date, return_date, aircraft_id, airport_id)
+VALUES (6, 890, 'Dubai', 'Flight from Dubai to London', '2023-04-11', '2023-04-12', 6, 1);
+

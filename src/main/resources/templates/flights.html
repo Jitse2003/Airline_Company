@@ -20,41 +20,67 @@
         <div class="col-md-8 mx-auto">
             <h1>Flights</h1>
             <p>Choose a destination and book your flight today!</p>
-            <form>
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" class="form-control" id="destination" placeholder="Enter Destination">
-                </div>
-                <div class="form-group">
-                    <label for="depart">Departure Date</label>
-                    <input type="date" class="form-control" id="depart">
-                </div>
-                <div class="form-group">
-                    <label for="return">Return Date</label>
-                    <input type="date" class="form-control" id="return">
-                </div>
-                <button type="submit" class="btn btn-primary mt-3">Search Flights</button>
-            </form>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-md-8 mx-auto">
-            <h2>Available Flights</h2>
-            <div th:each="flight: ${flights}" class="card my-3">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="|${flight.getOrigin()} to ${flight.getDestination()}|"></h5>
-                    <a class="btn btn-primary"
-                       th:href="@{|/flightdetails/${flight.getId()}|}"
-                       th:text="Details"
-                    >Details</a>
-                    <a class="btn btn-primary"
-                       th:href="@{|/book|}"
-                       th:text="Book"
-                    >Details</a>
-                </div>
+
+            <a th:unless="${showFilter}" th:href="@{/flights/filter}"
+               class="btn btn-primary btn-md mr-2 my-2 custom-button">
+                Filter Flights
+            </a>
+
+            <div th:if="${showFilter}">
+                <a th:href="@{/flights}" class="btn btn-primary btn-md mr-2 my-2 custom-button">Search All Flights</a>
+
+                <form>
+                    <div class="form-group">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" class="form-control"
+                               placeholder="Enter country name">
+                    </div>
+                    <div class="form-group">
+                        <label for="departDate">Departure Date:</label>
+                        <input th:min="${datelimit}" type="date" id="departDate" name="departDate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="returnDate">Return Date:</label>
+                        <input th:min="${datelimit}" type="date" id="returnDate" name="returnDate" class="form-control">
+                    </div>
+                    <button type="submit" value="search" class="btn btn-primary mt-3" th:href="@{flights/filter}">Search
+                        Flights
+                    </button>
+                </form>
             </div>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+            <h2>Available Flights</h2>
+
+
+            <form method="post" action="/flight/compare">
+                <div th:each="flight: ${flights}" class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title"
+                            th:text="|${flight.getOrigin()} to ${flight.getAirport().getCountry()}|"></h5>
+                        <a class="btn btn-primary"
+                           th:href="@{|/flightdetails/${flight.getId()}|}"
+                           th:text="Details"
+                        >Details</a>
+                        <a class="btn btn-primary"
+                           th:href="@{|/book|}"
+                           th:text="Book"
+                        >Details</a>
+
+                        <input type="checkbox" name="selectedFlights" value="flight.id" th:value="${flight.getId()}"
+                               class="float-right mt-2">
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 mb-5">Compare Selected Flights</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 </body>
 </html>

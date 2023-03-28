@@ -1,9 +1,6 @@
 package be.thomasmore.airline_company.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.Collection;
 
@@ -13,8 +10,11 @@ public class Airport {
     private Integer id;
     private String name, city, country;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    Collection<Flight> flights;
+    @OneToMany(mappedBy = "airport")
+    private Collection<Flight> flights;
+
+    @OneToMany(mappedBy = "airport")
+    private Collection<Aircraft> aircraft;
     public Airport() {
     }
 
@@ -48,5 +48,14 @@ public class Airport {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+
+    public Collection<Aircraft> getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Collection<Aircraft> aircraft) {
+        this.aircraft = aircraft;
     }
 }

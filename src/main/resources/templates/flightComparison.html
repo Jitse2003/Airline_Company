@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Comparison</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/bootstrap.min.css}" href="/css/style.css"/>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/stylesheet.css}" href="/css/stylesheet.css"/>
+
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: headerfragment}">Header</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Flight Comparison</h1>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card my-3">
+                <div class="card-body">
+                    <h5 class="card-title">Flight 1</h5>
+                    <p class="card-text" th:text="|Origin: ${flight1.getOrigin()}|"></p>
+                    <p class="card-text" th:text="|Destination: ${flight1.getAirport().getCountry()}|"></p>
+                    <p class="card-text" th:text="|Departure Time: ${flight1.getDepartureDate()}|"></p>
+                    <p class="card-text" th:text="|Arrival Time: ${flight1.getReturnDate()}|"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card my-3">
+                <div class="card-body">
+                    <h5 class="card-title">Flight 2</h5>
+                    <p class="card-text" th:text="|Origin: ${flight2.getOrigin()}|"></p>
+                    <p class="card-text" th:text="|Destination: ${flight2.getAirport().getCountry()}|"></p>
+                    <p class="card-text" th:text="|Departure Time: ${flight2.getDepartureDate()}|"></p>
+                    <p class="card-text" th:text="|Arrival Time: ${flight2.getReturnDate()}|"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

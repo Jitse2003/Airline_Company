@@ -1,8 +1,9 @@
 package be.thomasmore.airline_company.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Collection;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -10,15 +11,18 @@ public class Flight {
     @Id
     private Integer id;
     private Integer flightNumber;
-    private String destination, origin, omschrijving, maatschapij;
+    private String origin, omschrijving;
 
     @Temporal(TemporalType.DATE)
-    private Date departureDate, returnDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate departureDate, returnDate;
 
-    @ManyToMany(mappedBy = "flights")
-    private Collection<Airport> airports;
-    public Flight() {
-    }
+    @ManyToOne(optional = false)
+    private Airport airport;
+
+    @ManyToOne(optional = false)
+    private Aircraft aircraft;
+
 
     public Integer getId() {
         return id;
@@ -36,14 +40,6 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
     public String getOmschrijving() {
         return omschrijving;
     }
@@ -52,27 +48,19 @@ public class Flight {
         this.omschrijving = omschrijving;
     }
 
-    public String getMaatschapij() {
-        return maatschapij;
-    }
-
-    public void setMaatschapij(String maatschapij) {
-        this.maatschapij = maatschapij;
-    }
-
-    public Date getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(LocalDate departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -84,13 +72,19 @@ public class Flight {
         this.origin = origin;
     }
 
-
-
-    public Collection<Airport> getAirports() {
-        return airports;
+        public Airport getAirport() {
+        return airport;
     }
 
-    public void setAirports(Collection<Airport> airports) {
-        this.airports = airports;
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
+
+    public Aircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Aircraft aircraft) {
+        this.aircraft = aircraft;
     }
 }

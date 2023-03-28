@@ -27,7 +27,7 @@
         <div class="col-md-4">
             <h4>Interesting Flights</h4>
             <div th:each="flight: ${flights}">
-                <a th:text="|${flight.getDestination()}|" th:href="@{|/flightdetails/${flight.getId()}|}"></a>
+                <a th:text="|${flight.getAirport().getCountry()}|" th:href="@{|/flightdetails/${flight.getId()}|}"></a>
             </div>
         </div>
     </div>
