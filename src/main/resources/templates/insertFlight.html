@@ -18,27 +18,27 @@
     <form th:action="@{|/voegtoe|}" method="post">
         <div class="form-group">
             <label for="flightNumber"> Flight number </label>
-            <input type="text" class="form-control" id="flightNumber" name="flightNumber" placeholder="Flightnumber">
+            <input type="text" class="form-control" id="flightNumber" name="flightNumber" placeholder="Flightnumber" required>
         </div>
         <div class="form-group">
             <label for="Origin"> Origin </label>
-            <input type="text" class="form-control" id="Origin" name="Origin" placeholder="Origin">
+            <input type="text" class="form-control" id="Origin" name="Origin" placeholder="Origin" required>
         </div>
         <div class="form-group">
             <label for="omschrijving"> Omschrijving </label>
-            <input type="text" class="form-control" id="omschrijving" name="omschrijving" placeholder="Omschrijving">
+            <input type="text" class="form-control" id="omschrijving" name="omschrijving" placeholder="Omschrijving" required>
         </div>
         <div class="form-group">
             <label for="departureDate"> Departure Date </label>
-            <input type="date" class="form-control" id="departureDate" name="departureDate" placeholder="Departure Date">
+            <input type="date" class="form-control" id="departureDate" name="departureDate" placeholder="Departure Date" required>
         </div>
         <div class="form-group">
             <label for="returnDate"> Return Date </label>
-            <input type="date" class="form-control" id="returnDate" name="returnDate" placeholder="Return Date">
+            <input type="date" class="form-control" id="returnDate" name="returnDate" placeholder="Return Date" required>
         </div>
         <div class="form-group">
             <label for="aircraftId">Aircraft Id</label>
-            <select class="form-control" id="aircraftId" name="aircraftId">
+            <select class="form-control" id="aircraftId" name="aircraftId" required>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -50,7 +50,7 @@
 
         <div class="form-group">
             <label for="airportId">Airport Id</label>
-            <select class="form-control" id="airportId" name="airportId">
+            <select class="form-control" id="airportId" name="airportId" required>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>

@@ -38,7 +38,7 @@ public class FlightController {
     }
 
     @GetMapping({"/flights/filter"})
-    public String flightsWithFilter(Model model, Principal principal,
+    public String flightsWithFilter(Principal principal, Model model,
                                     @RequestParam(required = false) String country,
                                     @RequestParam(required = false) LocalDate departDate,
                                     @RequestParam(required = false) LocalDate returnDate,
@@ -59,7 +59,7 @@ public class FlightController {
     }
 
     @GetMapping({"/flightdetails", "/flightdetails/{id}"})
-    public String flightdetails(Model model , Principal principal, @PathVariable(required = false) Integer id) {
+    public String flightdetails(Principal principal, Model model, @PathVariable(required = false) Integer id) {
         if (id == null) {
             return "flightdetails";
         }
@@ -68,9 +68,10 @@ public class FlightController {
         if (flight.isPresent()) {
             model.addAttribute("flights", flightRepository.findAll());
             model.addAttribute("flight", flight.get());
+            model.addAttribute("principal", principal);
 
         }
-        model.addAttribute("principal", principal);
+
         return "flightdetails";
     }
 
@@ -78,7 +79,7 @@ public class FlightController {
     @PostMapping("/flight/compare")
     public String compareFlights(@RequestParam(name = "selectedFlights", required = false) List<Integer> selectedFlights,
                                  Model model, Principal principal) {
-
+        System.out.println("qdonqfbuhbq  bhuevb evzbievzb ebhu  evzbiuv ezbbhu evzbu ");
         if (selectedFlights == null || selectedFlights.size() != 2) {
             return "redirect:/flights";
         }
@@ -96,19 +97,22 @@ public class FlightController {
         model.addAttribute("flight2", flight2);
         model.addAttribute("flightsToCompare", flightsToCompare);
         model.addAttribute("principal", principal);
+
         return "flightComparison";
     }
 
     @GetMapping({"/voegtoe"})
-    public String insertFlight(Model model, Principal principal) {
+    public String insertFlight(Principal principal, Model model) {
 
         model.addAttribute("principal", principal);
+
         return "insertFlight";
 
 
     }
+
     @PostMapping({"/voegtoe"})
-    public String toegevoegd(Model model,Principal principal, String flightNumber, String Origin, String omschrijving, LocalDate departureDate, LocalDate returnDate, Integer aircraftId, Integer airportId) {
+    public String toegevoegd(Principal principal, Model model, String flightNumber, String Origin, String omschrijving, LocalDate departureDate, LocalDate returnDate, Integer aircraftId, Integer airportId) {
 
         Integer flightnr = Integer.valueOf(flightNumber);
         flightRepository.add(flightnr, Origin, omschrijving, departureDate, returnDate, aircraftId, airportId);

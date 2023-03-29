@@ -49,7 +49,7 @@
                         <input th:min="${datelimit}" type="date" id="departDate" name="departDate" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="flightNumber">Return Date:</label>
+                        <label for="flightNumber">Flight Number:</label>
                         <input type="number" id="flightNumber" name="flightNumber" class="form-control"
                                placeholder="Enter flight number">
                     </div>
@@ -66,30 +66,24 @@
             <h2>Available Flights</h2>
 
 
-            <form method="post" action="/flight/compare">
-                <div th:if="${flights.size() == 0}"></div>
-                <div th:unless="${flights.size() == 0}">
-                    <div th:each="flight: ${flights}" class="card my-3">
-                        <div class="card-body">
-                            <h5 class="card-title"
-                                th:text="|${flight.getOrigin()} to ${flight.getAirport().getCountry()}|"></h5>
-                            <a class="btn btn-primary"
-                               th:href="@{|/flightdetails/${flight.getId()}|}"
-                               th:text="Details"
-                            >Details</a>
-                            <a class="btn btn-primary"
-                               th:href="@{|/book|}"
-                               th:text="Book"
-                            >Details</a>
+            <form method="post" th:action="@{|/flight/compare|}">
+                <div th:each="flight: ${flights}" class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title"
+                            th:text="|${flight.getOrigin()} to ${flight.getAirport().getCountry()}|"></h5>
+                        <a class="btn btn-primary"
+                           th:href="@{|/flightdetails/${flight.getId()}|}"
+                           th:text="Details"
+                        >Details</a>
+                        <a class="btn btn-primary"
+                           th:href="@{|/book|}"
+                           th:text="Book"
+                        >Book</a>
 
-                            <input type="checkbox" name="selectedFlights" value="flight.id" th:value="${flight.getId()}"
-                                   class="float-right mt-2">
-                        </div>
-
+                        <input type="checkbox" name="selectedFlights" th:value="${flight.id}" class="float-right mt-2">
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3 mb-5">Compare Selected Flights</button>
                 </div>
-
+                <button type="submit" class="btn btn-primary mt-3 mb-5">Compare Selected Flights</button>
             </form>
         </div>
     </div>

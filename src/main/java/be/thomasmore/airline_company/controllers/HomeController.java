@@ -15,12 +15,14 @@ public class HomeController {
     @Autowired
     private FlightRepository flightRepository;
     @GetMapping({"/","/index"})
-    public String home(Model model, Principal principal){
+    public String home(Principal principal, Model model){
+
         model.addAttribute("principal", principal);
+
         return "index";
     }
     @GetMapping({"/about"})
-    public String about(Model model, Principal principal){
+    public String about(Principal principal,Model model){
         Iterable<Flight> flights = flightRepository.findAll();
 
         model.addAttribute("flights", flights);
@@ -29,18 +31,18 @@ public class HomeController {
     }
 
     @GetMapping({"/contact"})
-    public String contact(Model model, Principal principal){
+    public String contact(Principal principal, Model model){
         model.addAttribute("principal", principal);
         return "contact";
     }
 
     @GetMapping({"/book"})
-    public String book(Model model, Principal principal){
+    public String book(Principal principal, Model model){
         model.addAttribute("principal", principal);
         return "book";
     }
     @GetMapping({"/bookConfirm"})
-    public String bookConfirm(Model model, Principal principal){
+    public String bookConfirm(Principal principal, Model model){
         model.addAttribute("principal", principal);
         return "bookConfirm";
     }
