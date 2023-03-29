@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Entity
 public class Flight {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
     private Integer flightNumber;
@@ -72,7 +73,7 @@ public class Flight {
         this.origin = origin;
     }
 
-        public Airport getAirport() {
+    public Airport getAirport() {
         return airport;
     }
 

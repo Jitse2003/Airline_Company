@@ -29,6 +29,26 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/contact}">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/voegtoe}">Voeg toe</a>
+                </li>
+                <div th:unless="${principal}">
+                    <li class="nav-item">
+                        <a class="btn btn-primary"
+                           th:href="@{|/login|}"
+                           th:text="|Login|"
+                        >Login</a>
+                    </li>
+                </div>
+                <div th:if="${principal}">
+                    <li class="nav-item">
+                        <a class="btn btn-primary"
+                           th:href="@{|/logout|}"
+                           th:text="|Sign out|"
+                        >Sign out</a>
+                    </li>
+                </div>
+
             </ul>
         </div>
     </nav>

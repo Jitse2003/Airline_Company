@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h1>Book Flight</h1>
-            <p>Please fill out the form below to book your flight:</p>
+            <p>Vul form in om je vlucht te boeken:</p>
             <form>
                 <div class="form-group">
                     <label for="passengerName">Passenger Name</label>
@@ -46,7 +46,10 @@
                     <label for="creditCard">Credit Card Number</label>
                     <input type="text" class="form-control" id="creditCard" placeholder="Enter credit card number">
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Book Flight</button>
+                <a class="btn btn-primary"
+                   th:href="@{|/bookConfirm|}"
+                   th:text="|Book Flight|"
+                >Book Flight</a>
             </form>
         </div>
     </div>
